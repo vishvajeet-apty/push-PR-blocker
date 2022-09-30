@@ -21,21 +21,18 @@ async function run(): Promise<void> {
 
   let frozenBranches
   let isBranchPresent
+
   try {
     const frozenBranchData = await getS3Object(bucketName, s3FileKey)
     if (!frozenBranchData) {
-      // there is no data available..
-      // think about it
       core.info(
         'There is no data available about the deployed branches on production for this serive '
       )
     } else {
-      core.info(frozenBranchData.toString())
       isBranchPresent = FrozenBranches.FromJsonString(
         frozenBranchData.toString()
-      ).hasBranch('rc-34')
+      ).hasBranch(branchName)
 
-      core.info('checcking if the branch is present or not')
       if (isBranchPresent) {
         core.setFailed(
           'You cannot push or make a Pull_request to a branch that is deployed in the production'
