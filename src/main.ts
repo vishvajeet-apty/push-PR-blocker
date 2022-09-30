@@ -23,11 +23,7 @@ async function run(): Promise<void> {
 
   try {
     const frozenBranchData = await getS3Object(bucketName, s3FileKey)
-    if (!frozenBranchData) {
-      core.info(
-        'There is no data available about the deployed branches on production for this serive '
-      )
-    } else {
+    if (frozenBranchData) {
       isBranchPresent = FrozenBranches.FromJsonString(
         frozenBranchData.toString()
       ).hasBranch(branchName)
