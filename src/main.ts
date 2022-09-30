@@ -32,7 +32,7 @@ async function run(): Promise<void> {
     } else {
       isBranchPresent = FrozenBranches.FromJsonString(
         frozenBranchData.toString()
-      ).hasBranch(baseBranch)
+      ).hasBranch('rc-34')
 
       if (isBranchPresent) {
         core.setFailed(
