@@ -1,6 +1,6 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'push-PR-blocker'
+description: 'This repository will block the unwanted push and pull requests to the production deployed branches'
+author: 'Vishvajeet Singh'
 inputs:
   BRANCH_NAME:
     required: true
@@ -23,4 +23,4 @@ inputs:
   
 runs:
   using: 'node16'
-  main: 'dist/index.js'
+  main: 'lib/main.js'

@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import {getS3Object} from './s3'
-import {FrozenBranches} from './fileHandler'
+import {FrozenBranches} from './frozenBranches'
 
 import {
   branchName,
@@ -17,7 +17,6 @@ async function run(): Promise<void> {
   const s3FileKey = `assist/${deploy_environment}.json`
   let baseBranch = branchName
   if (event_type !== 'push') baseBranch = targetBranch
-  core.info(` The base branch is ${baseBranch}`)
 
   let frozenBranches
   let isBranchPresent
