@@ -1,14 +1,14 @@
-import {S3, config} from 'aws-sdk'
+import { S3, config } from 'aws-sdk';
 import * as core from '@actions/core'
-import {countReset} from 'console'
-import {AWSConfig} from './types/types'
-const s3 = new S3({})
+import { countReset } from 'console';
+import { AWSConfig } from './types/types';
+const s3 = new S3({});
 
 export const initAWS = (input: AWSConfig): void => {
   config.update({
     ...input
-  })
-}
+  });
+};
 
 export const getS3Object = async (
   bucketName: string,
@@ -27,39 +27,17 @@ export const getS3Object = async (
               new Error(
                 `Requested file with key: ${key}, Bucket: ${bucketName} not available - ${err}`
               )
-            )
+            );
           }
-          return res(undefined)
+          return res(undefined);
         }
         if (data?.Body) {
-          return res(data.Body)
+          return res(data.Body);
         } else {
-          return res(undefined)
+          return res(undefined);
         }
       }
-    )
-  })
-}
+    );
+  });
+};
 
-export async function createObject(
-  bucketName: string,
-  key: string,
-  body: string
-): Promise<void> {
-  return new Promise((res, rej) => {
-    const params = {
-      Bucket: bucketName,
-      Key: key,
-      Body: body
-    }
-
-    s3.putObject(params, (err: Error): void => {
-      if (err) {
-        return rej(
-          `Error while uploading frozen branch details ${body} to s3 bucket ${bucketName} & key ${key} - ${err}`
-        )
-      }
-      return res()
-    })
-  })
-}
