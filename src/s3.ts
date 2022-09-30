@@ -1,14 +1,14 @@
-import { S3, config } from 'aws-sdk';
+import {S3, config} from 'aws-sdk'
 import * as core from '@actions/core'
-import { countReset } from 'console';
-import { AWSConfig } from './types/types';
-const s3 = new S3({});
+import {countReset} from 'console'
+import {AWSConfig} from './types/types'
+const s3 = new S3({})
 
 export const initAWS = (input: AWSConfig): void => {
   config.update({
     ...input
-  });
-};
+  })
+}
 
 export const getS3Object = async (
   bucketName: string,
@@ -27,17 +27,17 @@ export const getS3Object = async (
               new Error(
                 `Requested file with key: ${key}, Bucket: ${bucketName} not available - ${err}`
               )
-            );
+            )
           }
-          return res(undefined);
+          return res(undefined)
         }
+        core.info(data.toString())
         if (data?.Body) {
-          return res(data.Body);
+          return res(data.Body)
         } else {
-          return res(undefined);
+          return res(undefined)
         }
       }
-    );
-  });
-};
-
+    )
+  })
+}

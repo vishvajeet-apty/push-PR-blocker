@@ -35,7 +35,7 @@ async function run(): Promise<void> {
         frozenBranchData.toString()
       ).hasBranch('rc-34')
 
-      core.info("checcking if the branch is present or not");
+      core.info('checcking if the branch is present or not')
       if (isBranchPresent) {
         core.setFailed(
           'You cannot push or make a Pull_request to a branch that is deployed in the production'
