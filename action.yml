@@ -1,0 +1,26 @@
+name: 'push-PR-blocker'
+description: 'This repository will block the unwanted push and pull requests to the production deployed branches'
+author: 'Vishvajeet Singh'
+inputs:
+  BRANCH_NAME:
+    required: true
+    description: "the name of the current branch"
+  ENVIRONMENT_NAME:
+    required: true
+    description: "the name of the environment variable"
+  BUCKET_NAME:
+    required: true
+    description: 'AWS S3 bucket to push the data'
+  REGION:
+    required: true
+    description: 'AWS S3 bucket region'
+  CONFIG_PATH:
+    required: true
+    description: 'Path to config file used in action'
+  TARGET_BRANCH:
+    required: true
+    description: 'Target branch of PR'
+  
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
