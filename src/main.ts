@@ -32,7 +32,6 @@ async function run(): Promise<void> {
           'You cannot push or make a Pull_request to a branch that is deployed in the production'
         )
       }
-    
     }
   } catch (err) {
     core.setFailed(

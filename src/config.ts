@@ -6,7 +6,6 @@ const configPath = core.getInput('CONFIG_PATH')
 const targetBranch = core.getInput('TARGET_Branch')
 const deploy_environment = core.getInput('ENVIRONMENT_NAME')
 
-
 export {
   branchName,
   bucketName,
