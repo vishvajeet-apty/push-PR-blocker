@@ -25,13 +25,14 @@ async function run(): Promise<void> {
     if (frozenBranchData) {
       isBranchPresent = FrozenBranches.FromJsonString(
         frozenBranchData.toString()
-      ).hasBranch(branchName)
+      ).hasBranch(baseBranch)
 
       if (isBranchPresent) {
         core.setFailed(
           'You cannot push or make a Pull_request to a branch that is deployed in the production'
         )
       }
+    
     }
   } catch (err) {
     core.setFailed(

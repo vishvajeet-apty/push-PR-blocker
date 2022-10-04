@@ -5,7 +5,7 @@ const region = core.getInput('REGION')
 const configPath = core.getInput('CONFIG_PATH')
 const targetBranch = core.getInput('TARGET_Branch')
 const deploy_environment = core.getInput('ENVIRONMENT_NAME')
-const event_type = core.getInput('EVENT_TYPE')
+
 
 export {
   branchName,
@@ -13,6 +13,5 @@ export {
   region,
   configPath,
   targetBranch,
-  deploy_environment,
-  event_type
+  deploy_environment
 }
