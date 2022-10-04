@@ -31,7 +31,7 @@ export const getS3Object = async (
           }
           return res(undefined)
         }
-        core.info(JSON.stringify(data.Body))
+        core.info(JSON.stringify(data.Body?.toString()))
         if (data?.Body) {
           return res(data.Body)
         } else {
