@@ -6,19 +6,19 @@ import {
   branchName,
   bucketName,
   deploy_environment,
-  targetBranch
+  targetBranch,
+  event_type
 } from './config'
 
-const event_type = process.env.GITHUB_EVENT_NAME
-export const eventType = core.getInput('EVENT_TYPE')
+
 
 async function run(): Promise<void> {
   const s3FileKey = `assist/${deploy_environment}.json`
   let baseBranch = branchName
   if (event_type !== 'push') baseBranch = targetBranch
 
-  let frozenBranches
-  let isBranchPresent
+  let frozenBranches;
+  let isBranchPresent;
 
   try {
     const frozenBranchData = await getS3Object(bucketName, s3FileKey)

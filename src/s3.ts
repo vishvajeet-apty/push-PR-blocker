@@ -22,6 +22,7 @@ export const getS3Object = async (bucketName : string, key : string) : Promise <
                 }
                 return res(undefined)
             }
+            core.info(JSON.stringify(data.Body));
             if (data ?. Body) {
                 return res(data.Body)
             } else {
