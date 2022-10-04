@@ -10,7 +10,6 @@ import {
 } from './config'
 
 const event_type = process.env.GITHUB_EVENT_NAME
-core.info('event_type: ' + event_type)
 export const eventType = core.getInput('EVENT_TYPE')
 
 async function run(): Promise<void> {
