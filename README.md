@@ -2,7 +2,7 @@
   <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
 </p>
 
-# Create a JavaScript Action using TypeScript
+# TypeScript action.
 
 Use this repository to run as a push and pull request blocker to an already deployed branch in production environment. It can be used as a job in one of the workflows present in Apty services(assist,account,etc)
 
@@ -14,7 +14,7 @@ This action will fail if the user is trying to push or make a pull request to an
 
 > In the workflow create a job which uses aptyInc/push-PR-blocker@main and provide the inputs mentioned below.
 
-## Jab requirements.
+## Job requirements.
 
           name: push-pr-blocker
           needs : [rules]
