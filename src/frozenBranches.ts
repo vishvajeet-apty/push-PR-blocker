@@ -1,3 +1,5 @@
+import { countReset } from "console"
+import * as core from '@actions/core'
 export class FrozenBranches {
   private branches: string[]
 
@@ -6,6 +8,7 @@ export class FrozenBranches {
   }
 
   static FromJsonString(data: string) {
+    core.info(JSON.stringify(JSON.parse(data).branches))
     return new FrozenBranches(JSON.parse(data).branches)
   }
 

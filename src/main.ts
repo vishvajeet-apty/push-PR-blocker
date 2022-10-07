@@ -16,7 +16,7 @@ async function run(): Promise<void> {
   let baseBranch = branchName
   if (event_type !== 'push') baseBranch = targetBranch
 
-  core.info(baseBranch)
+  
 
   let frozenBranches
   let isBranchPresent
