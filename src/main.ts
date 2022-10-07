@@ -20,6 +20,7 @@ async function run(): Promise<void> {
   let isBranchPresent
 
   try {
+    core.info(JSON.stringify(s3FileKey))
     const frozenBranchData = await getS3Object(bucketName, s3FileKey)
     core.info(JSON.stringify(frozenBranchData?.toString()))
     if (frozenBranchData) {
