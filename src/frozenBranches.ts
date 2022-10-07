@@ -1,4 +1,4 @@
-import { countReset } from "console"
+import {countReset} from 'console'
 import * as core from '@actions/core'
 export class FrozenBranches {
   private branches: string[]
