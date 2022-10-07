@@ -6,12 +6,13 @@ import {
   branchName,
   bucketName,
   deploy_environment,
-  targetBranch
+  targetBranch,
+  serviceName
 } from './config'
 
 const event_type = process.env.GITHUB_EVENT_NAME
 async function run(): Promise<void> {
-  const s3FileKey = `assist/${deploy_environment}.json`
+  const s3FileKey = `${serviceName}/${deploy_environment}.json`
   let baseBranch = branchName
   if (event_type !== 'push') baseBranch = targetBranch
 
