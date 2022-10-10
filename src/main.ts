@@ -27,12 +27,11 @@ async function run(): Promise<void> {
         frozenBranchData.toString()
       ).hasBranch(baseBranch)
 
-      core.setOutput(
-        'comment',
-        `The current branch ${baseBranch} is already deployed so it cannot be updated or merged with any PR's`
-      )
-
       if (isBranchPresent) {
+        core.setOutput(
+          'comment',
+          `The current branch ${baseBranch} is already deployed so it cannot be updated or merged with any PR's`
+        )
         core.setFailed(
           'You cannot push or make a Pull_request to a branch that is deployed in the production'
         )
