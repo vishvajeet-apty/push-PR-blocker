@@ -20,14 +20,16 @@ async function run(): Promise<void> {
   let isBranchPresent
 
   try {
-    core.info(JSON.stringify(s3FileKey))
+    
     const frozenBranchData = await getS3Object(bucketName, s3FileKey)
-    core.info(JSON.stringify(frozenBranchData?.toString()))
+
     if (frozenBranchData) {
       isBranchPresent = FrozenBranches.FromJsonString(
         frozenBranchData.toString()
       ).hasBranch(baseBranch)
-
+      
+      core.setOutput('comment' , `The current branch ${baseBranch} is already deployed so it cannot be updated or merged with any PR's`)
+      
       if (isBranchPresent) {
         core.setFailed(
           'You cannot push or make a Pull_request to a branch that is deployed in the production'
