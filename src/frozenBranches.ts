@@ -8,7 +8,6 @@ export class FrozenBranches {
   }
 
   static FromJsonString(data: string) {
-    core.info(JSON.stringify(JSON.parse(data).branches))
     return new FrozenBranches(JSON.parse(data).branches)
   }
 
